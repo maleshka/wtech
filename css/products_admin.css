@@ -1,0 +1,48 @@
+.admin-card {
+    position: relative;
+}
+
+.admin-edit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6px;
+    background: #111;
+    color: #fff;
+    border: none;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 14px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    font-family: 'Inter', sans-serif;
+    border-radius: 3px;
+    transition: background 0.2s;
+}
+
+.admin-edit-btn:hover {
+    background: #444;
+}
+
+/* Add product karta — rovnaká veľkosť ako ostatné karty */
+.admin-add-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+}
+
+.admin-add-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+}
+
+.admin-add-btn:hover {
+    opacity: 0.5;
+}

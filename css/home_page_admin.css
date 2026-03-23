@@ -1,0 +1,71 @@
+.admin-editable {
+    position: relative;
+}
+
+
+.edit-btn {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    background: #111;
+    color: #fff;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 18px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.edit-btn:hover {
+    background: #444;
+}
+
+/* Add category button */
+.admin-add {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-circle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+}
+
+.add-circle-btn:hover {
+    opacity: 0.6;
+}
+
+/* Add product button */
+.admin-add-product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+}
+
+.add-product-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+}
+
+.add-product-btn:hover {
+    opacity: 0.6;
+}
