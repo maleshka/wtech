@@ -2,47 +2,167 @@
     position: relative;
 }
 
-.admin-edit-btn {
+.admin-edit-btn,
+.admin-add-product-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-top: 6px;
-    background: #111;
-    color: #fff;
+    background: #efc75e;
+    color: #111;
     border: none;
-    font-size: 11px;
     font-weight: 600;
-    padding: 4px 14px;
     cursor: pointer;
     letter-spacing: 0.5px;
     font-family: 'Inter', sans-serif;
-    border-radius: 3px;
-    transition: background 0.2s;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: filter 0.2s;
+    white-space: nowrap;
 }
 
-.admin-edit-btn:hover {
-    background: #444;
+.admin-edit-btn:hover,
+.admin-add-product-btn:hover {
+    filter: brightness(0.95);
+    color: #111;
 }
 
-/* Add product karta — rovnaká veľkosť ako ostatné karty */
-.admin-add-card {
-    display: flex;
+.admin-edit-btn {
+    height: 32px;
+    padding: 0 14px;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+@media (min-width: 576px) {
+    .admin-edit-btn {
+        height: 36px;
+        padding: 0 18px;
+        font-size: 13px;
+        margin-top: 8px;
+    }
+}
+
+.admin-add-product-btn {
+    height: 36px;
+    padding: 0 18px;
+    font-size: 13px;
+    margin-left: auto;
+}
+
+.admin-delete-btn {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    aspect-ratio: 1 / 1;
-}
-
-.admin-add-btn {
-    background: none;
-    border: none;
+    height: 32px;
+    padding: 0 14px;
+    background: transparent;
+    color: #c0392b;
+    border: 1px solid #c0392b;
+    font-size: 12px;
+    font-weight: 600;
     cursor: pointer;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.2s;
+    letter-spacing: 0.5px;
+    font-family: 'Inter', sans-serif;
+    border-radius: 4px;
+    margin-top: 6px;
+    transition: background 0.2s, color 0.2s;
 }
 
-.admin-add-btn:hover {
-    opacity: 0.5;
+@media (min-width: 576px) {
+    .admin-delete-btn {
+        height: 36px;
+        padding: 0 18px;
+        font-size: 13px;
+        margin-top: 8px;
+    }
+}
+
+.admin-delete-btn:hover {
+    background: #c0392b;
+    color: #fff;
+}
+
+.admin-card .product-price-row {
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.title-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 4px;
+    width: 32px;
+    height: 32px;
+    display: none;
+    position: relative;
+    z-index: 1050;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler-icon {
+    width: 24px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23111' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+@media (max-width: 991px) {
+    .navbar-toggler {
+        display: block;
+        order: -1;
+    }
+
+    .navbar {
+        position: relative;
+    }
+
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 280px;
+        height: 100vh;
+        background: #f7f7f5;
+        padding: 80px 24px 24px;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        transition: left 0.3s ease;
+        z-index: 1045;
+        overflow-y: auto;
+    }
+
+    .navbar-collapse.show {
+        left: 0;
+    }
+
+    .navbar-collapse.collapsing {
+        left: -280px;
+        transition: left 0.3s ease;
+    }
+
+    .nav-left {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 20px;
+    }
+
+    .nav-link {
+        font-size: 18px;
+        padding: 8px 0 !important;
+    }
+
+    .nav-right {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        z-index: 10;
+    }
 }
