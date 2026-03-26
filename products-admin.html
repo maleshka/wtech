@@ -53,6 +53,14 @@
                             <path d="M6.8 19.2C7.8 16.9 9.6 15.7 12 15.7C14.4 15.7 16.2 16.9 17.2 19.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
                         </svg>
                     </button>
+
+                    <button class="icon-btn" aria-label="Logout">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 17L21 12L16 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M21 12H9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
                 </div>
             </nav>
         </div>
@@ -71,21 +79,131 @@
                 </div>
 
                 <div class="filter-bar">
-                    <button class="filter-btn">Price <span>▼</span></button>
-                    <button class="filter-btn">Size <span>▼</span></button>
-                    <button class="filter-btn">Sale <span>▼</span></button>
-                    <button class="filter-btn">Brand <span>▼</span></button>
-                    <button class="filter-btn">Color <span>▼</span></button>
-                    <div class="ms-auto">
+                    <div class="filter-dropdown">
                         <button class="filter-btn newest-btn">Newest <span>▼</span></button>
+                        <div class="filter-dropdown-menu">
+                            <label class="filter-option">
+                                <input type="radio" name="sort" value="newest">
+                                <span>Newest First</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="sort" value="oldest">
+                                <span>Oldest First</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="sort" value="popular">
+                                <span>Most Popular</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-dropdown">
+                        <button class="filter-btn">Price <span>▼</span></button>
+                        <div class="filter-dropdown-menu">
+                            <label class="filter-option">
+                                <input type="radio" name="price-sort" value="low-high">
+                                <span>Low to High</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="price-sort" value="high-low">
+                                <span>High to Low</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-dropdown">
+                        <button class="filter-btn">Size <span>▼</span></button>
+                        <div class="filter-dropdown-menu">
+                            <label class="filter-option">
+                                <input type="checkbox" value="xs">
+                                <span>XS</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="s">
+                                <span>S</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="m">
+                                <span>M</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="l">
+                                <span>L</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="xl">
+                                <span>XL</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="xxl">
+                                <span>XXL</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-dropdown">
+                        <button class="filter-btn">Sale <span>▼</span></button>
+                        <div class="filter-dropdown-menu">
+                            <label class="filter-option">
+                                <input type="checkbox" value="on-sale">
+                                <span>On Sale</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-dropdown">
+                        <button class="filter-btn">Brand <span>▼</span></button>
+                        <div class="filter-dropdown-menu">
+                            <label class="filter-option">
+                                <input type="checkbox" value="myprotein">
+                                <span>MyProtein</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="optimum">
+                                <span>Optimum Nutrition</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="weider">
+                                <span>Weider</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="nutrend">
+                                <span>Nutrend</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-dropdown">
+                        <button class="filter-btn">Color <span>▼</span></button>
+                        <div class="filter-dropdown-menu">
+                            <label class="filter-option">
+                                <input type="checkbox" value="black">
+                                <span>Black</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="white">
+                                <span>White</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="red">
+                                <span>Red</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="blue">
+                                <span>Blue</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Product image source: https://prottop.com/protein-z-mineralnym-kompleksom/?srsltid=AfmBOopSr2P0io1p_bLjq0hrEmkMvmtoEL3DGkJ2OprRdbfxDa4bsQpV -->
                 <section class="products-grid">
 
                     <article class="product-card-custom admin-card">
                         <a href="product-detail.html" class="product-card-link">
-                            <div class="product-thumb"></div>
+                            <div class="product-thumb">
+                                <img src="photo/protein_moc.webp" alt="Sport Protein">
+                            </div>
                             <h3 class="product-name">Sport Protein</h3>
                             <div class="product-price-row">
                                 <div class="price-wrap">
@@ -93,14 +211,16 @@
                                     <span class="price-old">$ 40.00</span>
                                 </div>
                                 <button class="admin-delete-btn" type="button" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
-                                <button class="admin-edit-btn" type="button">Edit</button>
+                                <a href="edit-product-admin.html" class="admin-edit-btn">Edit</a>
                             </div>
                         </a>
                     </article>
 
                     <article class="product-card-custom admin-card">
                         <a href="product-detail.html" class="product-card-link">
-                            <div class="product-thumb"></div>
+                            <div class="product-thumb">
+                                <img src="photo/protein_moc.webp" alt="Sport Protein">
+                            </div>
                             <h3 class="product-name">Sport Protein</h3>
                             <div class="product-price-row">
                                 <div class="price-wrap">
@@ -108,14 +228,16 @@
                                     <span class="price-old">$ 40.00</span>
                                 </div>
                                 <button class="admin-delete-btn" type="button" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
-                                <button class="admin-edit-btn" type="button">Edit</button>
+                                <a href="edit-product-admin.html" class="admin-edit-btn">Edit</a>
                             </div>
                         </a>
                     </article>
 
                     <article class="product-card-custom admin-card">
                         <a href="product-detail.html" class="product-card-link">
-                            <div class="product-thumb"></div>
+                            <div class="product-thumb">
+                                <img src="photo/protein_moc.webp" alt="Sport Protein">
+                            </div>
                             <h3 class="product-name">Sport Protein</h3>
                             <div class="product-price-row">
                                 <div class="price-wrap">
@@ -123,14 +245,16 @@
                                     <span class="price-old">$ 40.00</span>
                                 </div>
                                 <button class="admin-delete-btn" type="button" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
-                                <button class="admin-edit-btn" type="button">Edit</button>
+                                <a href="edit-product-admin.html" class="admin-edit-btn">Edit</a>
                             </div>
                         </a>
                     </article>
 
                     <article class="product-card-custom admin-card">
                         <a href="product-detail.html" class="product-card-link">
-                            <div class="product-thumb"></div>
+                            <div class="product-thumb">
+                                <img src="photo/protein_moc.webp" alt="Sport Protein">
+                            </div>
                             <h3 class="product-name">Sport Protein</h3>
                             <div class="product-price-row">
                                 <div class="price-wrap">
@@ -138,14 +262,16 @@
                                     <span class="price-old">$ 40.00</span>
                                 </div>
                                 <button class="admin-delete-btn" type="button" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
-                                <button class="admin-edit-btn" type="button">Edit</button>
+                                <a href="edit-product-admin.html" class="admin-edit-btn">Edit</a>
                             </div>
                         </a>
                     </article>
 
                     <article class="product-card-custom admin-card">
                         <a href="product-detail.html" class="product-card-link">
-                            <div class="product-thumb"></div>
+                            <div class="product-thumb">
+                                <img src="photo/protein_moc.webp" alt="Sport Protein">
+                            </div>
                             <h3 class="product-name">Sport Protein</h3>
                             <div class="product-price-row">
                                 <div class="price-wrap">
@@ -153,14 +279,16 @@
                                     <span class="price-old">$ 40.00</span>
                                 </div>
                                 <button class="admin-delete-btn" type="button" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
-                                <button class="admin-edit-btn" type="button">Edit</button>
+                                <a href="edit-product-admin.html" class="admin-edit-btn">Edit</a>
                             </div>
                         </a>
                     </article>
 
                     <article class="product-card-custom admin-card">
                         <a href="product-detail.html" class="product-card-link">
-                            <div class="product-thumb"></div>
+                            <div class="product-thumb">
+                                <img src="photo/protein_moc.webp" alt="Sport Protein">
+                            </div>
                             <h3 class="product-name">Sport Protein</h3>
                             <div class="product-price-row">
                                 <div class="price-wrap">
@@ -168,14 +296,16 @@
                                     <span class="price-old">$ 40.00</span>
                                 </div>
                                 <button class="admin-delete-btn" type="button" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
-                                <button class="admin-edit-btn" type="button">Edit</button>
+                                <a href="edit-product-admin.html" class="admin-edit-btn">Edit</a>
                             </div>
                         </a>
                     </article>
 
                     <article class="product-card-custom admin-card">
                         <a href="product-detail.html" class="product-card-link">
-                            <div class="product-thumb"></div>
+                            <div class="product-thumb">
+                                <img src="photo/protein_moc.webp" alt="Sport Protein">
+                            </div>
                             <h3 class="product-name">Sport Protein</h3>
                             <div class="product-price-row">
                                 <div class="price-wrap">
@@ -183,14 +313,16 @@
                                     <span class="price-old">$ 40.00</span>
                                 </div>
                                 <button class="admin-delete-btn" type="button" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
-                                <button class="admin-edit-btn" type="button">Edit</button>
+                                <a href="edit-product-admin.html" class="admin-edit-btn">Edit</a>
                             </div>
                         </a>
                     </article>
 
                     <article class="product-card-custom admin-card">
                         <a href="product-detail.html" class="product-card-link">
-                            <div class="product-thumb"></div>
+                            <div class="product-thumb">
+                                <img src="photo/protein_moc.webp" alt="Sport Protein">
+                            </div>
                             <h3 class="product-name">Sport Protein</h3>
                             <div class="product-price-row">
                                 <div class="price-wrap">
@@ -198,14 +330,16 @@
                                     <span class="price-old">$ 40.00</span>
                                 </div>
                                 <button class="admin-delete-btn" type="button" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
-                                <button class="admin-edit-btn" type="button">Edit</button>
+                                <a href="edit-product-admin.html" class="admin-edit-btn">Edit</a>
                             </div>
                         </a>
                     </article>
 
                     <article class="product-card-custom admin-card">
                         <a href="product-detail.html" class="product-card-link">
-                            <div class="product-thumb"></div>
+                            <div class="product-thumb">
+                                <img src="photo/protein_moc.webp" alt="Sport Protein">
+                            </div>
                             <h3 class="product-name">Sport Protein</h3>
                             <div class="product-price-row">
                                 <div class="price-wrap">
@@ -213,14 +347,16 @@
                                     <span class="price-old">$ 40.00</span>
                                 </div>
                                 <button class="admin-delete-btn" type="button" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
-                                <button class="admin-edit-btn" type="button">Edit</button>
+                                <a href="edit-product-admin.html" class="admin-edit-btn">Edit</a>
                             </div>
                         </a>
                     </article>
 
                     <article class="product-card-custom admin-card">
                         <a href="product-detail.html" class="product-card-link">
-                            <div class="product-thumb"></div>
+                            <div class="product-thumb">
+                                <img src="photo/protein_moc.webp" alt="Sport Protein">
+                            </div>
                             <h3 class="product-name">Sport Protein</h3>
                             <div class="product-price-row">
                                 <div class="price-wrap">
@@ -228,14 +364,16 @@
                                     <span class="price-old">$ 40.00</span>
                                 </div>
                                 <button class="admin-delete-btn" type="button" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
-                                <button class="admin-edit-btn" type="button">Edit</button>
+                                <a href="edit-product-admin.html" class="admin-edit-btn">Edit</a>
                             </div>
                         </a>
                     </article>
 
                     <article class="product-card-custom admin-card">
                         <a href="product-detail.html" class="product-card-link">
-                            <div class="product-thumb"></div>
+                            <div class="product-thumb">
+                                <img src="photo/protein_moc.webp" alt="Sport Protein">
+                            </div>
                             <h3 class="product-name">Sport Protein</h3>
                             <div class="product-price-row">
                                 <div class="price-wrap">
@@ -243,7 +381,7 @@
                                     <span class="price-old">$ 40.00</span>
                                 </div>
                                 <button class="admin-delete-btn" type="button" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
-                                <button class="admin-edit-btn" type="button">Edit</button>
+                                <a href="edit-product-admin.html" class="admin-edit-btn">Edit</a>
                             </div>
                         </a>
                     </article>
@@ -270,6 +408,7 @@
 
 </div>
 
+<script src="js/filter.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

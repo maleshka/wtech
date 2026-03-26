@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin - Add New Product</title>
+  <title>Admin - Edit Product</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -54,14 +54,6 @@
               <path d="M6.8 19.2C7.8 16.9 9.6 15.7 12 15.7C14.4 15.7 16.2 16.9 17.2 19.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
             </svg>
           </button>
-
-          <button class="icon-btn" aria-label="Logout">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
-              <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M16 17L21 12L16 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M21 12H9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
         </div>
       </nav>
     </div>
@@ -70,22 +62,23 @@
   <main class="add-main">
     <div class="container">
 
-      <div class="breadcrumb-custom">Mens / Food / Protein / <span>Add new product</span></div>
+      <div class="breadcrumb-custom">Mens / Food / Protein / <span>Edit product</span></div>
 
       <div class="add-title-row">
-        <h1 class="catalog-title">Add new product</h1>
+        <h1 class="catalog-title">Edit product</h1>
       </div>
 
+      <!-- Product image source: https://prottop.com/protein-z-mineralnym-kompleksom/?srsltid=AfmBOopSr2P0io1p_bLjq0hrEmkMvmtoEL3DGkJ2OprRdbfxDa4bsQpV -->
       <div class="add-layout">
 
         <div class="add-image-col">
-          <div class="upload-main">
-            <div class="upload-plus">＋</div>
-            <div class="upload-label">Upload product image</div>
-            <div class="upload-sub">PNG, JPG — max 5MB</div>
+          <div class="upload-main" style="background: #ececec; padding: 0;">
+            <img src="photo/protein_moc.webp" alt="Product Image" style="width: 100%; height: 100%; object-fit: contain;">
           </div>
           <div class="upload-thumbs">
-            <div class="upload-thumb">＋</div>
+            <div class="upload-thumb" style="background: #ececec; padding: 0;">
+              <img src="photo/protein_moc.webp" alt="Thumbnail 1" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
             <div class="upload-thumb">＋</div>
             <div class="upload-thumb">＋</div>
             <div class="upload-thumb">＋</div>
@@ -99,7 +92,7 @@
             <div class="add-grid">
               <div class="add-field full">
                 <label class="add-label">Product name</label>
-                <input class="add-input" type="text" placeholder="e.g. Sport Protein Extra">
+                <input class="add-input" type="text" value="Luxus Protein Extra Sport">
               </div>
               <div class="add-field">
                 <label class="add-label">Category</label>
@@ -107,7 +100,7 @@
                   <option>Men</option>
                   <option>Women</option>
                   <option>Brands</option>
-                  <option>Food</option>
+                  <option selected>Food</option>
                   <option>Sports</option>
                   <option>Accessories</option>
                 </select>
@@ -115,18 +108,18 @@
               <div class="add-field">
                 <label class="add-label">Subcategory</label>
                 <select class="add-select">
-                  <option>Protein</option>
+                  <option selected>Protein</option>
                   <option>Vitamins</option>
                   <option>Supplements</option>
                 </select>
               </div>
               <div class="add-field full">
                 <label class="add-label">Brand</label>
-                <input class="add-input" type="text" placeholder="e.g. MyProtein">
+                <input class="add-input" type="text" value="MyProtein">
               </div>
               <div class="add-field full">
                 <label class="add-label">Description</label>
-                <textarea class="add-textarea" placeholder="Product description..."></textarea>
+                <textarea class="add-textarea">High quality whey protein powder with premium ingredients. Perfect for muscle building and recovery after workout. Contains 23g of protein per serving.</textarea>
               </div>
             </div>
           </div>
@@ -136,19 +129,19 @@
             <div class="add-grid">
               <div class="add-field">
                 <label class="add-label">Price ($)</label>
-                <input class="add-input" type="text" placeholder="0.00">
+                <input class="add-input" type="text" value="36.00">
               </div>
               <div class="add-field">
                 <label class="add-label">Original price ($)</label>
-                <input class="add-input" type="text" placeholder="0.00">
+                <input class="add-input" type="text" value="40.00">
               </div>
               <div class="add-field">
                 <label class="add-label">Discount (%)</label>
-                <input class="add-input add-input-disabled" type="text" placeholder="Calculated automatically" disabled>
+                <input class="add-input add-input-disabled" type="text" value="10%" disabled>
               </div>
               <div class="add-field">
                 <label class="add-label">Stock quantity</label>
-                <input class="add-input" type="text" placeholder="0">
+                <input class="add-input" type="text" value="150">
               </div>
             </div>
           </div>
@@ -168,7 +161,7 @@
             </div>
             <div class="add-field" style="margin-top: 14px;">
               <label class="add-label">Color</label>
-              <input class="add-input" type="text" placeholder="e.g. Black, White">
+              <input class="add-input" type="text" value="Vanilla, Chocolate">
             </div>
           </div>
 
@@ -191,7 +184,8 @@
           </div>
 
           <div class="add-actions">
-            <button class="add-btn-save" type="button">Save product</button>
+            <button class="add-btn-save" type="button">Save Changes</button>
+            <button class="add-btn-delete" type="button" onclick="return confirm('Are you sure you want to delete this product?')">Delete Product</button>
             <a href="products-admin.html" class="add-btn-cancel">Cancel</a>
           </div>
 

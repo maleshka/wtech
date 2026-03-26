@@ -6,7 +6,7 @@
 
 body.products-page {
     font-family: 'Inter', sans-serif;
-    background: #f7f7f5;
+    background: #fff;
     color: #111;
 }
 
@@ -106,13 +106,15 @@ button {
     height: 26px;
 }
 
+.icon-btn[aria-label="Logout"] svg {
+    width: 22px;
+    height: 22px;
+}
+
 .icon-btn:hover {
     opacity: 0.6;
 }
 
-/* =========================
-   MAIN CONTENT
-========================= */
 .catalog-main {
     padding-top: 22px;
     padding-bottom: 34px;
@@ -162,9 +164,6 @@ button {
     margin-top: 8px;
 }
 
-/* =========================
-   FILTER BAR
-========================= */
 .filter-bar {
     min-height: 30px;
     background: #f2ebdb;
@@ -223,9 +222,70 @@ button {
     color: #6a6561;
 }
 
-/* =========================
-   PRODUCTS GRID
-========================= */
+.filter-dropdown {
+    position: relative;
+}
+
+.filter-btn {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.filter-btn:hover {
+    color: #111;
+}
+
+.filter-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: #fff;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 12px;
+    min-width: 180px;
+    z-index: 100;
+}
+
+.filter-dropdown.active .filter-dropdown-menu {
+    display: block;
+}
+
+.filter-dropdown.active .filter-btn span {
+    transform: translateY(-1px) rotate(180deg);
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background 0.15s;
+}
+
+.filter-option:hover {
+    background: #f5f5f5;
+}
+
+.filter-option input[type="checkbox"],
+.filter-option input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #111;
+}
+
+.filter-option span {
+    font-size: 14px;
+    color: #333;
+    user-select: none;
+}
+
 .products-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -282,6 +342,16 @@ button {
     border-radius: 2px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
     margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .product-name {
@@ -329,9 +399,6 @@ button {
     transform: translateY(-1px);
 }
 
-/* =========================
-   PAGINATION
-========================= */
 .pagination-wrap {
     position: relative;
 }

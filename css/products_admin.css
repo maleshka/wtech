@@ -94,6 +94,70 @@
     margin-bottom: 12px;
 }
 
+.filter-dropdown {
+    position: relative;
+}
+
+.filter-btn {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.filter-btn:hover {
+    color: #111;
+}
+
+.filter-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: #fff;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 12px;
+    min-width: 180px;
+    z-index: 100;
+}
+
+.filter-dropdown.active .filter-dropdown-menu {
+    display: block;
+}
+
+.filter-dropdown.active .filter-btn span {
+    transform: translateY(-1px) rotate(180deg);
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background 0.15s;
+}
+
+.filter-option:hover {
+    background: #f5f5f5;
+}
+
+.filter-option input[type="checkbox"],
+.filter-option input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #111;
+}
+
+.filter-option span {
+    font-size: 14px;
+    color: #333;
+    user-select: none;
+}
+
 .navbar-toggler {
     border: none;
     padding: 4px;

@@ -6,7 +6,7 @@
 
 body.delivery-page {
     font-family: 'Inter', sans-serif;
-    background: #f7f7f5;
+    background: #fff;
     color: #111;
     min-height: 100vh;
     display: flex;
@@ -100,6 +100,11 @@ body.delivery-page {
 .icon-btn svg {
     width: 26px;
     height: 26px;
+}
+
+.icon-btn[aria-label="Logout"] svg {
+    width: 22px;
+    height: 22px;
 }
 
 .icon-btn:hover {
@@ -464,6 +469,8 @@ body.delivery-page {
 
 .footer-links {
     list-style: none;
+    text-align: left;
+    display: inline-block;
 }
 
 .footer-links li {

@@ -1,7 +1,7 @@
 body.detail-page {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background: #f7f7f5;
+    background: #fff;
     color: #111;
     min-height: 100vh;
     display: flex;
@@ -162,6 +162,11 @@ body.detail-page {
     height: 26px;
 }
 
+.icon-btn[aria-label="Logout"] svg {
+    width: 22px;
+    height: 22px;
+}
+
 .icon-btn:hover {
     opacity: 0.6;
 }
@@ -171,10 +176,20 @@ body.detail-page {
 ========================= */
 .detail-image-box {
     width: 100%;
-    height: 360px;
+    aspect-ratio: 1;
     background: #dddddd;
     position: relative;
     border: 1px solid #d2d2d2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.detail-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .detail-sale-badge {
@@ -299,6 +314,10 @@ body.detail-page {
     cursor: pointer;
     transition: filter 0.2s ease;
     padding: 0 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .detail-cart-btn:hover {
@@ -330,6 +349,8 @@ body.detail-page {
 
 .footer-links {
     list-style: none;
+    text-align: left;
+    display: inline-block;
 }
 
 .footer-links li {
