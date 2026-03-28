@@ -439,6 +439,7 @@ body.delivery-page {
     border: none;
     background: #efc75e;
     color: #111;
+    text-decoration: none;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
