@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mens Protein</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/products-page.css">
+</head>
+<body class="products-page">
+
+<div class="page-shell">
+    <header class="header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="nav-left">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/products" class="nav-link">Men</a>
+            <a href="#" class="nav-link">Women</a>
+            <a href="#" class="nav-link">Brands</a>
+            <a href="#" class="nav-link">Food</a>
+            <a href="#" class="nav-link">Sports</a>
+            <a href="#" class="nav-link">Accessories</a>
+          </div>
+        </div>
+
+        <div class="nav-right">
+          <button class="icon-btn" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"></circle>
+              <path d="M20 20L16.65 16.65" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+            </svg>
+          </button>
+
+          <a href="/cart" class="icon-btn active-icon" aria-label="Cart">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M8 8V6.5C8 4.57 9.57 3 11.5 3C13.43 3 15 4.57 15 6.5V8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              <path d="M5 8H18L17 19.5C16.93 20.37 16.2 21 15.33 21H7.67C6.8 21 6.07 20.37 6 19.5L5 8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+          <button class="icon-btn" aria-label="Account">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.7"></circle>
+              <path d="M6.8 19.2C7.8 16.9 9.6 15.7 12 15.7C14.4 15.7 16.2 16.9 17.2 19.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+            </svg>
+          </button>
+
+          <form method="POST" action="{{ route('logout') }}" style="display:inline">
+            @csrf
+            <button type="submit" class="icon-btn" aria-label="Logout">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 17L21 12L16 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M21 12H9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+    <main class="catalog-main">
+      <div class="container-fluid custom-container">
+        <div class="catalog-wrap">
+
+          <div class="breadcrumb-custom">Mens / Food / <span>Protein</span></div>
+
+          <div class="title-row">
+            <h1 class="catalog-title">Mens Protein</h1>
+            <span class="catalog-count">(57)</span>
+          </div>
+
+          <div class="filter-bar">
+            <details class="filter-dropdown">
+              <summary class="filter-btn">Newest <span>▼</span></summary>
+              <div class="filter-dropdown-menu">
+                <label class="filter-option">
+                  <input type="radio" name="sort" value="newest" checked>
+                  <span>Newest First</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="sort" value="oldest">
+                  <span>Oldest First</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="sort" value="popular">
+                  <span>Most Popular</span>
+                </label>
+              </div>
+            </details>
+
+            <details class="filter-dropdown">
+              <summary class="filter-btn">Price <span>▼</span></summary>
+              <div class="filter-dropdown-menu">
+                <label class="filter-option">
+                  <input type="radio" name="price_sort" value="low-high">
+                  <span>Low to High</span>
+                </label>
+                <label class="filter-option">
+                  <input type="radio" name="price_sort" value="high-low">
+                  <span>High to Low</span>
+                </label>
+              </div>
+            </details>
+
+            <details class="filter-dropdown">
+              <summary class="filter-btn">Size <span>▼</span></summary>
+              <div class="filter-dropdown-menu">
+                <label class="filter-option"><input type="checkbox" name="size" value="xs"><span>XS</span></label>
+                <label class="filter-option"><input type="checkbox" name="size" value="s"><span>S</span></label>
+                <label class="filter-option"><input type="checkbox" name="size" value="m"><span>M</span></label>
+                <label class="filter-option"><input type="checkbox" name="size" value="l"><span>L</span></label>
+                <label class="filter-option"><input type="checkbox" name="size" value="xl"><span>XL</span></label>
+                <label class="filter-option"><input type="checkbox" name="size" value="xxl"><span>XXL</span></label>
+              </div>
+            </details>
+
+            <details class="filter-dropdown">
+              <summary class="filter-btn">Sale <span>▼</span></summary>
+              <div class="filter-dropdown-menu">
+                <label class="filter-option"><input type="checkbox" name="sale" value="on-sale"><span>On Sale</span></label>
+              </div>
+            </details>
+
+            <details class="filter-dropdown">
+              <summary class="filter-btn">Brand <span>▼</span></summary>
+              <div class="filter-dropdown-menu">
+                <label class="filter-option"><input type="checkbox" name="brand" value="myprotein"><span>MyProtein</span></label>
+                <label class="filter-option"><input type="checkbox" name="brand" value="optimum"><span>Optimum Nutrition</span></label>
+                <label class="filter-option"><input type="checkbox" name="brand" value="weider"><span>Weider</span></label>
+                <label class="filter-option"><input type="checkbox" name="brand" value="nutrend"><span>Nutrend</span></label>
+              </div>
+            </details>
+
+            <details class="filter-dropdown">
+              <summary class="filter-btn">Color <span>▼</span></summary>
+              <div class="filter-dropdown-menu">
+                <label class="filter-option"><input type="checkbox" name="color" value="black"><span>Black</span></label>
+                <label class="filter-option"><input type="checkbox" name="color" value="white"><span>White</span></label>
+                <label class="filter-option"><input type="checkbox" name="color" value="red"><span>Red</span></label>
+                <label class="filter-option"><input type="checkbox" name="color" value="blue"><span>Blue</span></label>
+              </div>
+            </details>
+          </div>
+
+          <section class="products-grid">
+            <article class="product-card-custom">
+              <a href="/product-detail" class="product-card-link">
+                <div class="product-thumb">
+                  <img src="/photo/protein_moc.webp" alt="Sport Protein">
+                </div>
+                <h3 class="product-name">Sport Protein</h3>
+                <div class="product-price-row">
+                  <div class="price-wrap">
+                    <span class="price-new">$ 36.00</span>
+                    <span class="price-old">$ 40.00</span>
+                  </div>
+                  <button class="wishlist-btn" type="button" aria-label="Wishlist">♡</button>
+                </div>
+              </a>
+            </article>
+
+            <article class="product-card-custom">
+              <a href="/product-detail" class="product-card-link">
+                <div class="product-thumb">
+                  <img src="/photo/protein_moc.webp" alt="Sport Protein">
+                </div>
+                <h3 class="product-name">Sport Protein</h3>
+                <div class="product-price-row">
+                  <div class="price-wrap">
+                    <span class="price-new">$ 36.00</span>
+                    <span class="price-old">$ 40.00</span>
+                  </div>
+                  <button class="wishlist-btn" type="button">♡</button>
+                </div>
+              </a>
+            </article>
+
+            <article class="product-card-custom">
+              <a href="/product-detail" class="product-card-link">
+                <div class="product-thumb">
+                  <img src="/photo/protein_moc.webp" alt="Sport Protein">
+                </div>
+                <h3 class="product-name">Sport Protein</h3>
+                <div class="product-price-row">
+                  <div class="price-wrap">
+                    <span class="price-new">$ 36.00</span>
+                    <span class="price-old">$ 40.00</span>
+                  </div>
+                  <button class="wishlist-btn" type="button">♡</button>
+                </div>
+              </a>
+            </article>
+
+            <article class="product-card-custom">
+              <a href="/product-detail" class="product-card-link">
+                <div class="product-thumb">
+                  <img src="/photo/protein_moc.webp" alt="Sport Protein">
+                </div>
+                <h3 class="product-name">Sport Protein</h3>
+                <div class="product-price-row">
+                  <div class="price-wrap">
+                    <span class="price-new">$ 36.00</span>
+                    <span class="price-old">$ 40.00</span>
+                  </div>
+                  <button class="wishlist-btn" type="button">♡</button>
+                </div>
+              </a>
+            </article>
+
+            <article class="product-card-custom">
+              <a href="/product-detail" class="product-card-link">
+                <div class="product-thumb">
+                  <img src="/photo/protein_moc.webp" alt="Sport Protein">
+                </div>
+                <h3 class="product-name">Sport Protein</h3>
+                <div class="product-price-row">
+                  <div class="price-wrap">
+                    <span class="price-new">$ 36.00</span>
+                    <span class="price-old">$ 40.00</span>
+                  </div>
+                  <button class="wishlist-btn" type="button">♡</button>
+                </div>
+              </a>
+            </article>
+
+            <article class="product-card-custom">
+              <a href="/product-detail" class="product-card-link">
+                <div class="product-thumb">
+                  <img src="/photo/protein_moc.webp" alt="Sport Protein">
+                </div>
+                <h3 class="product-name">Sport Protein</h3>
+                <div class="product-price-row">
+                  <div class="price-wrap">
+                    <span class="price-new">$ 36.00</span>
+                    <span class="price-old">$ 40.00</span>
+                  </div>
+                  <button class="wishlist-btn" type="button">♡</button>
+                </div>
+              </a>
+            </article>
+
+            <article class="product-card-custom">
+              <a href="/product-detail" class="product-card-link">
+                <div class="product-thumb">
+                  <img src="/photo/protein_moc.webp" alt="Sport Protein">
+                </div>
+                <h3 class="product-name">Sport Protein</h3>
+                <div class="product-price-row">
+                  <div class="price-wrap">
+                    <span class="price-new">$ 36.00</span>
+                    <span class="price-old">$ 40.00</span>
+                  </div>
+                  <button class="wishlist-btn" type="button">♡</button>
+                </div>
+              </a>
+            </article>
+
+            <article class="product-card-custom">
+              <a href="/product-detail" class="product-card-link">
+                <div class="product-thumb">
+                  <img src="/photo/protein_moc.webp" alt="Sport Protein">
+                </div>
+                <h3 class="product-name">Sport Protein</h3>
+                <div class="product-price-row">
+                  <div class="price-wrap">
+                    <span class="price-new">$ 36.00</span>
+                    <span class="price-old">$ 40.00</span>
+                  </div>
+                  <button class="wishlist-btn" type="button">♡</button>
+                </div>
+              </a>
+            </article>
+
+            <article class="product-card-custom">
+              <a href="/product-detail" class="product-card-link">
+                <div class="product-thumb">
+                  <img src="/photo/protein_moc.webp" alt="Sport Protein">
+                </div>
+                <h3 class="product-name">Sport Protein</h3>
+                <div class="product-price-row">
+                  <div class="price-wrap">
+                    <span class="price-new">$ 36.00</span>
+                    <span class="price-old">$ 40.00</span>
+                  </div>
+                  <button class="wishlist-btn" type="button">♡</button>
+                </div>
+              </a>
+            </article>
+
+            <article class="product-card-custom">
+              <a href="/product-detail" class="product-card-link">
+                <div class="product-thumb">
+                  <img src="/photo/protein_moc.webp" alt="Sport Protein">
+                </div>
+                <h3 class="product-name">Sport Protein</h3>
+                <div class="product-price-row">
+                  <div class="price-wrap">
+                    <span class="price-new">$ 36.00</span>
+                    <span class="price-old">$ 40.00</span>
+                  </div>
+                  <button class="wishlist-btn" type="button">♡</button>
+                </div>
+              </a>
+            </article>
+
+            <article class="product-card-custom">
+              <a href="/product-detail" class="product-card-link">
+                <div class="product-thumb">
+                  <img src="/photo/protein_moc.webp" alt="Sport Protein">
+                </div>
+                <h3 class="product-name">Sport Protein</h3>
+                <div class="product-price-row">
+                  <div class="price-wrap">
+                    <span class="price-new">$ 36.00</span>
+                    <span class="price-old">$ 40.00</span>
+                  </div>
+                  <button class="wishlist-btn" type="button">♡</button>
+                </div>
+              </a>
+            </article>
+
+            <article class="product-card-custom">
+              <a href="/product-detail" class="product-card-link">
+                <div class="product-thumb">
+                  <img src="/photo/protein_moc.webp" alt="Sport Protein">
+                </div>
+                <h3 class="product-name">Sport Protein</h3>
+                <div class="product-price-row">
+                  <div class="price-wrap">
+                    <span class="price-new">$ 36.00</span>
+                    <span class="price-old">$ 40.00</span>
+                  </div>
+                  <button class="wishlist-btn" type="button">♡</button>
+                </div>
+              </a>
+            </article>
+          </section>
+
+          <div class="pagination-wrap">
+            <div class="pagination-line"></div>
+            <nav class="catalog-pagination">
+              <a href="#" class="page-nav">&lt; Previous</a>
+              <a href="#" class="page-num active">1</a>
+              <a href="#" class="page-num">2</a>
+              <a href="#" class="page-num">3</a>
+              <span class="page-dots">...</span>
+              <a href="#" class="page-num">7</a>
+              <a href="#" class="page-nav next">Next &gt;</a>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </main>
+</div>
+
+<script src="/js/filter.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

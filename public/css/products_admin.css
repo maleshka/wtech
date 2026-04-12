@@ -1,0 +1,233 @@
+.admin-card {
+    position: relative;
+}
+
+.admin-edit-btn,
+.admin-add-product-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #efc75e;
+    color: #111;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    font-family: 'Inter', sans-serif;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: filter 0.2s;
+    white-space: nowrap;
+}
+
+.admin-edit-btn:hover,
+.admin-add-product-btn:hover {
+    filter: brightness(0.95);
+    color: #111;
+}
+
+.admin-edit-btn {
+    height: 32px;
+    padding: 0 14px;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+@media (min-width: 576px) {
+    .admin-edit-btn {
+        height: 36px;
+        padding: 0 18px;
+        font-size: 13px;
+        margin-top: 8px;
+    }
+}
+
+.admin-add-product-btn {
+    height: 36px;
+    padding: 0 18px;
+    font-size: 13px;
+    margin-left: auto;
+}
+
+.admin-delete-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 0 14px;
+    background: transparent;
+    color: #c0392b;
+    border: 1px solid #c0392b;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    font-family: 'Inter', sans-serif;
+    border-radius: 4px;
+    margin-top: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+@media (min-width: 576px) {
+    .admin-delete-btn {
+        height: 36px;
+        padding: 0 18px;
+        font-size: 13px;
+        margin-top: 8px;
+    }
+}
+
+.admin-delete-btn:hover {
+    background: #c0392b;
+    color: #fff;
+}
+
+.admin-card .product-price-row {
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.title-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.filter-dropdown {
+    position: relative;
+}
+
+.filter-btn {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.filter-btn:hover {
+    color: #111;
+}
+
+.filter-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: #fff;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 12px;
+    min-width: 180px;
+    z-index: 100;
+}
+
+.filter-dropdown.active .filter-dropdown-menu {
+    display: block;
+}
+
+.filter-dropdown.active .filter-btn span {
+    transform: translateY(-1px) rotate(180deg);
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background 0.15s;
+}
+
+.filter-option:hover {
+    background: #f5f5f5;
+}
+
+.filter-option input[type="checkbox"],
+.filter-option input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #111;
+}
+
+.filter-option span {
+    font-size: 14px;
+    color: #333;
+    user-select: none;
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 4px;
+    width: 32px;
+    height: 32px;
+    display: none;
+    position: relative;
+    z-index: 1050;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler-icon {
+    width: 24px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23111' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+@media (max-width: 991px) {
+    .navbar-toggler {
+        display: block;
+        order: -1;
+    }
+
+    .navbar {
+        position: relative;
+    }
+
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 280px;
+        height: 100vh;
+        background: #f7f7f5;
+        padding: 80px 24px 24px;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        transition: left 0.3s ease;
+        z-index: 1045;
+        overflow-y: auto;
+    }
+
+    .navbar-collapse.show {
+        left: 0;
+    }
+
+    .navbar-collapse.collapsing {
+        left: -280px;
+        transition: left 0.3s ease;
+    }
+
+    .nav-left {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 20px;
+    }
+
+    .nav-link {
+        font-size: 18px;
+        padding: 8px 0 !important;
+    }
+
+    .nav-right {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+}.nav-right form { display: inline-flex; align-items: center; margin: 0; padding: 0; }
+.nav-right form { display: inline-flex; align-items: center; margin: 0; padding: 0; line-height: 0; vertical-align: middle; }
