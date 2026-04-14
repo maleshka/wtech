@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product detail</title>
+  <title>{{ $product->name }}</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/products_detail.css">
 </head>
@@ -29,13 +29,21 @@
         </div>
 
         <div class="nav-right">
-          <button class="icon-btn" aria-label="Search">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"></circle>
-              <path d="M20 20L16.65 16.65" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
-            </svg>
-          </button>
-
+          <form method="GET" action="{{ route('products.search') }}" style="display:flex; align-items:center; gap:8px;">
+                <input
+                    type="text"
+                    name="q"
+                    value="{{ request('q') }}"
+                    placeholder="Search"
+                    style="border:1px solid #ddd; padding:6px 10px; font-size:14px; width:140px;"
+                >
+                <button class="icon-btn" type="submit" aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"></circle>
+                    <path d="M20 20L16.65 16.65" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+                    </svg>
+                </button>
+            </form>
           <a href="/cart" class="icon-btn active-icon" aria-label="Cart">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
               <path d="M8 8V6.5C8 4.57 9.57 3 11.5 3C13.43 3 15 4.57 15 6.5V8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
@@ -69,22 +77,26 @@
     <div class="detail-container">
 
       <div class="detail-breadcrumb">
-        Mens / Food / <span>Protein</span>
+        Mens / Food / <span>{{ $product->category->name ?? 'Protein' }}</span>
       </div>
 
       <section class="detail-section">
         <div class="detail-left">
           <div class="detail-image-box">
-            <img src="/photo/protein_moc.webp" alt="Luxus Protein Extra Sport">
-            <span class="detail-sale-badge">25% OFF</span>
+            <img src="{{ $product->image ? asset($product->image) : '/photo/protein_moc.webp' }}" alt="{{ $product->name }}">
+            @if($product->old_price && $product->old_price > $product->price)
+              <span class="detail-sale-badge">
+                {{ round((($product->old_price - $product->price) / $product->old_price) * 100) }}% OFF
+              </span>
+            @endif
           </div>
         </div>
 
         <div class="detail-right">
           <div class="detail-top-row">
             <div>
-              <p class="detail-category">Protein</p>
-              <h1 class="detail-title">Luxus Protein Extra Sport</h1>
+              <p class="detail-category">{{ $product->category->name ?? 'Protein' }}</p>
+              <h1 class="detail-title">{{ $product->name }}</h1>
             </div>
 
             <div class="detail-icons">
@@ -108,27 +120,35 @@
           </div>
 
           <p class="detail-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. ... <span>See more</span>
+            {{ $product->description }}
           </p>
 
           <div class="detail-price-wrap">
-            <span class="detail-price-new">$ 36.00</span>
-            <span class="detail-price-old">$ 40.00</span>
+            <span class="detail-price-new">$ {{ number_format($product->price, 2) }}</span>
+            @if($product->old_price)
+              <span class="detail-price-old">$ {{ number_format($product->old_price, 2) }}</span>
+            @endif
           </div>
 
-          <div class="detail-bottom-row">
-            <div class="detail-quantity">
-              <button type="button" onclick="this.parentNode.querySelector('input').stepDown()">−</button>
-              <input type="number" value="1" min="1" max="99" name="quantity">
-              <button type="button" onclick="this.parentNode.querySelector('input').stepUp()">+</button>
+
+            <form method="POST" action="{{ route('cart.add', $product) }}">
+                @csrf
+
+                <div class="detail-bottom-row">
+                    <div class="detail-quantity">
+                    <button type="button" onclick="this.parentNode.querySelector('input').stepDown()">−</button>
+                    <input type="number" value="1" min="1" max="99" name="quantity">
+                    <button type="button" onclick="this.parentNode.querySelector('input').stepUp()">+</button>
+                    </div>
+
+                    <button type="submit" id="addToCartBtn" class="detail-cart-btn">+ Add to Cart</button>
+                </div>
+                @if(session('success'))
+            <div class="alert alert-success mt-3">
+                {{ session('success') }}
             </div>
-
-            <button id="addToCartBtn" class="detail-cart-btn">+ Add to Cart</button>
-          </div>
+        @endif
+            </form>
         </div>
       </section>
 
