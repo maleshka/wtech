@@ -17,7 +17,6 @@ class Product extends Model
         'image',
         'is_on_sale',
         'category_id',
-        'subcategory_id',
     ];
 
     protected $casts = [
@@ -29,5 +28,10 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class);
     }
 }

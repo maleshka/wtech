@@ -90,6 +90,17 @@
               </span>
             @endif
           </div>
+          @if($product->images->count() > 1)
+            <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+              @foreach($product->images as $img)
+                <img
+                  src="{{ asset('storage/' . $img->path) }}"
+                  alt="{{ $product->name }}"
+                  style="width:70px; height:70px; object-fit:contain; border:1px solid #ddd; padding:4px;"
+                >
+              @endforeach
+            </div>
+          @endif
         </div>
 
         <div class="detail-right">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
@@ -97,7 +98,9 @@ class ProductController extends Controller
             ->orderBy('size')
             ->pluck('size');
 
-        return view('products', [
+        $view = Auth::user()->role === 'admin' ? 'products-admin' : 'products';
+
+        return view($view, [
             'products' => $products,
             'selectedCategory' => $selectedCategory,
             'brandOptions' => $brandOptions,
@@ -134,7 +137,9 @@ class ProductController extends Controller
         $colorOptions = Product::whereNotNull('color')->distinct()->orderBy('color')->pluck('color');
         $sizeOptions = Product::whereNotNull('size')->distinct()->orderBy('size')->pluck('size');
 
-        return view('products', [
+        $view = Auth::user()->role === 'admin' ? 'products-admin' : 'products';
+
+        return view($view, [
             'products' => $products,
             'selectedCategory' => $selectedCategory,
             'brandOptions' => $brandOptions,

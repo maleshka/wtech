@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/products', function () {
     return view('products');
@@ -35,3 +36,9 @@ Route::post('/cart/update/{product}', [CartController::class, 'update'])->name('
 Route::post('/cart/remove/{product}', [CartController::class, 'remove'])->name('cart.remove')->middleware('auth');
 
 Route::get('/search', [ProductController::class, 'search'])->name('products.search')->middleware('auth');
+
+Route::get('/admin/products/create', [AdminController::class, 'create'])->name('admin.products.create')->middleware('auth');
+Route::post('/admin/products', [AdminController::class, 'store'])->name('admin.products.store')->middleware('auth');
+Route::get('/admin/products/{product}/edit', [AdminController::class, 'edit'])->name('admin.products.edit')->middleware('auth');
+Route::put('/admin/products/{product}', [AdminController::class, 'update'])->name('admin.products.update')->middleware('auth');
+Route::delete('/admin/products/{product}', [AdminController::class, 'destroy'])->name('admin.products.destroy')->middleware('auth');
