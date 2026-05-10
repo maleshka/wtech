@@ -98,7 +98,7 @@ class ProductController extends Controller
             ->orderBy('size')
             ->pluck('size');
 
-        $view = Auth::user()->role === 'admin' ? 'products-admin' : 'products';
+        $view = Auth::check() && Auth::user()->role === 'admin' ? 'products-admin' : 'products';
 
         return view($view, [
             'products' => $products,
@@ -137,7 +137,7 @@ class ProductController extends Controller
         $colorOptions = Product::whereNotNull('color')->distinct()->orderBy('color')->pluck('color');
         $sizeOptions = Product::whereNotNull('size')->distinct()->orderBy('size')->pluck('size');
 
-        $view = Auth::user()->role === 'admin' ? 'products-admin' : 'products';
+        $view = Auth::check() && Auth::user()->role === 'admin' ? 'products-admin' : 'products';
 
         return view($view, [
             'products' => $products,

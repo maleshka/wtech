@@ -22,12 +22,12 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <div class="nav-left">
                         <a href="/" class="nav-link">Home</a>
-                        <a href="/products" class="nav-link">Men</a>
-                        <a href="#" class="nav-link">Women</a>
-                        <a href="#" class="nav-link">Brands</a>
-                        <a href="#" class="nav-link">Food</a>
-                        <a href="#" class="nav-link">Sports</a>
-                        <a href="#" class="nav-link">Accessories</a>
+                        <a href="/products/category/men" class="nav-link">Men</a>
+                        <a href="/products/category/women" class="nav-link">Women</a>
+                        <a href="/products/category/brands" class="nav-link">Brands</a>
+                        <a href="/products/category/food" class="nav-link">Food</a>
+                        <a href="/products/category/sports" class="nav-link">Sports</a>
+                        <a href="/products/category/accessories" class="nav-link">Accessories</a>
                     </div>
                 </div>
 
@@ -81,16 +81,7 @@
         <div class="container-fluid custom-container">
             <div class="catalog-wrap">
 
-                <div class="breadcrumb-custom">
-                    Mens
-                    @if($selectedCategory)
-                        / <span>{{ $selectedCategory->name }}</span>
-                    @else
-                        / Food / <span>Protein</span>
-                    @endif
-                </div>
-
-                <div class="title-row">
+<div class="title-row">
                     <h1 class="catalog-title">{{ $selectedCategory?->name ?? 'Mens Protein' }}</h1>
                     <span class="catalog-count">({{ $products->total() }})</span>
                     <a href="{{ route('admin.products.create') }}" class="admin-add-product-btn">+ Add new product</a>

@@ -20,12 +20,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <div class="nav-left">
             <a href="/" class="nav-link">Home</a>
-            <a href="/products" class="nav-link">Men</a>
-            <a href="#" class="nav-link">Women</a>
-            <a href="#" class="nav-link">Brands</a>
-            <a href="#" class="nav-link">Food</a>
-            <a href="#" class="nav-link">Sports</a>
-            <a href="#" class="nav-link">Accessories</a>
+            <a href="/products/category/men" class="nav-link">Men</a>
+            <a href="/products/category/women" class="nav-link">Women</a>
+            <a href="/products/category/brands" class="nav-link">Brands</a>
+            <a href="/products/category/food" class="nav-link">Food</a>
+            <a href="/products/category/sports" class="nav-link">Sports</a>
+            <a href="/products/category/accessories" class="nav-link">Accessories</a>
           </div>
         </div>
 
@@ -60,6 +60,7 @@
             </svg>
           </button>
 
+          @auth
           <form method="POST" action="{{ route('logout') }}" style="display:inline">
             @csrf
             <button type="submit" class="icon-btn" aria-label="Logout">
@@ -70,6 +71,15 @@
               </svg>
             </button>
           </form>
+          @else
+          <a href="{{ route('login') }}" class="icon-btn" aria-label="Login">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M15 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 17L15 12L10 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15 12H3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          @endauth
         </div>
       </nav>
     </div>
@@ -79,16 +89,7 @@
       <div class="container-fluid custom-container">
         <div class="catalog-wrap">
 
-          <div class="breadcrumb-custom">
-            Mens
-            @if($selectedCategory)
-              / <span>{{ $selectedCategory->name }}</span>
-            @else
-              / Food / <span>Protein</span>
-            @endif
-          </div>
-
-          <div class="title-row">
+<div class="title-row">
             <h1 class="catalog-title">{{ $selectedCategory?->name ?? 'Mens Protein' }}</h1>
             <span class="catalog-count">({{ $products->total() }})</span>
           </div>

@@ -22,11 +22,11 @@
                     <div class="nav-left">
                         <a href="/" class="nav-link">Home</a>
                         <a href="/products" class="nav-link active">Men</a>
-                        <a href="#" class="nav-link">Women</a>
-                        <a href="#" class="nav-link">Brands</a>
-                        <a href="#" class="nav-link">Food</a>
-                        <a href="#" class="nav-link">Sports</a>
-                        <a href="#" class="nav-link">Accessories</a>
+                        <a href="/products/category/women" class="nav-link">Women</a>
+                        <a href="/products/category/brands" class="nav-link">Brands</a>
+                        <a href="/products/category/food" class="nav-link">Food</a>
+                        <a href="/products/category/sports" class="nav-link">Sports</a>
+                        <a href="/products/category/accessories" class="nav-link">Accessories</a>
                     </div>
                 </div>
                 <div class="nav-right">
