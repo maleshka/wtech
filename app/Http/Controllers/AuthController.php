@@ -8,15 +8,32 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\ShoppingBasket;
 use App\Models\User;
 
-class AuthController extends Controller
-{
-    public function showLogin()
-    {
+class AuthController extends Controller{
+    public function showLogin(){
         return view('auth.login');
     }
 
-    public function login(Request $request)
-    {
+    public function logout(Request $request){
+        $user = Auth::user();
+        if ($user) {
+            $cart = session()->get('cart', []);
+            ShoppingBasket::where('id_user', $user->id)->delete();
+            foreach ($cart as $productId => $item) {
+                ShoppingBasket::create([
+                    'id_user'          => $user->id,
+                    'id_product'       => $productId,
+                    'product_quantity' => $item['quantity'],
+                ]);
+            }
+        }
+
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    }
+
+    public function login(Request $request){
         $credentials = $request->validate([
             'email'    => ['required', 'email'],
             'password' => ['required'],
@@ -27,11 +44,7 @@ class AuthController extends Controller
 
             $sessionCart = session()->get('cart', []);
             $user = Auth::user();
-
-            // Načítaj DB košík
             $dbItems = ShoppingBasket::where('id_user', $user->id)->with('product')->get();
-
-            // Preveď DB košík do session formátu
             $dbCart = [];
             foreach ($dbItems as $item) {
                 if ($item->product) {
@@ -45,8 +58,6 @@ class AuthController extends Controller
                     ];
                 }
             }
-
-            // Zlúč session košík s DB košíkom
             foreach ($sessionCart as $productId => $item) {
                 if (isset($dbCart[$productId])) {
                     $dbCart[$productId]['quantity'] += $item['quantity'];
@@ -54,11 +65,7 @@ class AuthController extends Controller
                     $dbCart[$productId] = $item;
                 }
             }
-
-            // Ulož zlúčený košík do session
             session()->put('cart', $dbCart);
-
-            // Ulož zlúčený košík do DB
             ShoppingBasket::where('id_user', $user->id)->delete();
             foreach ($dbCart as $productId => $item) {
                 ShoppingBasket::create([
@@ -76,13 +83,11 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
-    public function showRegister()
-    {
+    public function showRegister(){
         return view('auth.register');
     }
 
-    public function register(Request $request)
-    {
+    public function register(Request $request){
         $data = $request->validate([
             'first_name' => ['required', 'string', 'max:100'],
             'last_name'  => ['required', 'string', 'max:100'],
@@ -104,25 +109,5 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function logout(Request $request)
-    {
-        $user = Auth::user();
-        if ($user) {
-            $cart = session()->get('cart', []);
-            ShoppingBasket::where('id_user', $user->id)->delete();
-            foreach ($cart as $productId => $item) {
-                ShoppingBasket::create([
-                    'id_user'          => $user->id,
-                    'id_product'       => $productId,
-                    'product_quantity' => $item['quantity'],
-                ]);
-            }
-        }
-
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/');
-    }
 }
 

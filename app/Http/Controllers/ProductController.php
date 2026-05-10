@@ -8,20 +8,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class ProductController extends Controller
-{
-    public function index(Request $request, $categorySlug = null)
-    {
+class ProductController extends Controller{
+    public function index(Request $request, $categorySlug = null){
         $query = Product::query()->with('category');
 
         $selectedCategory = null;
-
         if ($categorySlug) {
             $selectedCategory = Category::where('slug', $categorySlug)->firstOrFail();
             $query->where('category_id', $selectedCategory->id);
         }
 
-        // PRICE RANGE
         if ($request->filled('price_min')) {
             $query->where('price', '>=', (float) $request->price_min);
         }
@@ -30,30 +26,25 @@ class ProductController extends Controller
             $query->where('price', '<=', (float) $request->price_max);
         }
 
-        // BRAND
         if ($request->filled('brand')) {
             $brands = is_array($request->brand) ? $request->brand : [$request->brand];
             $query->whereIn('brand', $brands);
         }
 
-        // COLOR
         if ($request->filled('color')) {
             $colors = is_array($request->color) ? $request->color : [$request->color];
             $query->whereIn('color', $colors);
         }
 
-        // SIZE
         if ($request->filled('size')) {
             $sizes = is_array($request->size) ? $request->size : [$request->size];
             $query->whereIn('size', $sizes);
         }
 
-        // SALE
         if ($request->filled('sale') && $request->sale === 'on-sale') {
             $query->where('is_on_sale', true);
         }
 
-        // SORTING
         $sort = $request->get('sort', 'newest');
 
         switch ($sort) {
@@ -109,14 +100,11 @@ class ProductController extends Controller
         ]);
     }
 
-    public function show(Product $product)
-    {
+    public function show(Product $product){
         return view('product-detail', compact('product'));
     }
-    public function search(Request $request)
-    {
+    public function search(Request $request){
         $search = trim((string) $request->get('q', ''));
-
         $query = Product::query()->with('category');
 
         if ($search !== '') {

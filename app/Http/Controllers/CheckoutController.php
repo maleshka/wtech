@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
-    public function shipping()
-    {
+    public function shipping(){
         $cart = session()->get('cart', []);
 
         if (empty($cart)) {
@@ -23,21 +22,18 @@ class CheckoutController extends Controller
         return view('checkout-shipping-payment', compact('cart', 'total'));
     }
 
-    public function storeShipping(Request $request)
-    {
+    public function storeShipping(Request $request){
         $request->validate([
             'delivery_method' => ['required', 'string'],
             'payment_method'  => ['required', 'string'],
         ]);
-
         session()->put('checkout.delivery_method', $request->delivery_method);
         session()->put('checkout.payment_method', $request->payment_method);
 
         return redirect()->route('checkout.delivery');
     }
 
-    public function delivery()
-    {
+    public function delivery(){
         $cart = session()->get('cart', []);
 
         if (empty($cart)) {
@@ -55,8 +51,7 @@ class CheckoutController extends Controller
         return view('checkout-delivery', compact('cart', 'total', 'deliveryMethod', 'shippingCost'));
     }
 
-    public function storeDelivery(Request $request)
-    {
+    public function storeDelivery(Request $request){
         $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'email'      => ['required', 'email', 'max:255'],
@@ -97,28 +92,24 @@ class CheckoutController extends Controller
             ]);
         }
 
-        // vymazat kosik
         session()->forget('cart');
         session()->forget('checkout');
 
         if (Auth::check()) {
             ShoppingBasket::where('id_user', Auth::id())->delete();
         }
-
         return redirect()->route('checkout.confirm');
     }
 
-    public function confirm()
-    {
+    public function confirm(){
         return view('checkout-confirm');
     }
-
     private function shippingCost(string $method): float
     {
         return match($method) {
             'post'     => 9.90,
             'personal' => 2.90,
-            default    => 4.90, // courier
+            default    => 4.90,
         };
     }
 }

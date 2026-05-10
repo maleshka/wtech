@@ -8,10 +8,8 @@ use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminController extends Controller
-{
-    public function create()
-    {
+class AdminController extends Controller{
+    public function create(){
         if (Auth::user()->role !== 'admin') {
             return redirect('/');
         }
@@ -19,8 +17,7 @@ class AdminController extends Controller
         return view('product-add-admin', compact('categories'));
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         if (Auth::user()->role !== 'admin') {
             return redirect('/');
         }
@@ -73,9 +70,18 @@ class AdminController extends Controller
 
         return redirect('/products');
     }
+    public function destroy(Product $product){
+        if (Auth::user()->role !== 'admin') {
+            return redirect('/');
+        }
 
-    public function edit(Product $product)
-    {
+        $product->images()->delete();
+        $product->delete();
+
+        return redirect('/products');
+    }
+
+    public function edit(Product $product){
         if (Auth::user()->role !== 'admin') {
             return redirect('/');
         }
@@ -83,8 +89,7 @@ class AdminController extends Controller
         return view('product-edit-admin', compact('product', 'categories'));
     }
 
-    public function update(Request $request, Product $product)
-    {
+    public function update(Request $request, Product $product){
         if (Auth::user()->role !== 'admin') {
             return redirect('/');
         }
@@ -113,13 +118,11 @@ class AdminController extends Controller
             'is_on_sale'  => $request->has('is_on_sale'),
         ]);
 
-        // Zmazanie označených fotiek
         $toDelete = array_filter($request->input('delete_images', []), fn($v) => is_numeric($v) && $v > 0);
         if (count($toDelete) > 0) {
             $product->images()->whereIn('id', $toDelete)->delete();
         }
 
-        // Upload nových fotiek
         $uploadedImages = array_filter($request->file('images') ?? [], fn($f) => $f !== null);
         foreach ($uploadedImages as $file) {
             $isFirst = $product->images()->count() === 0;
@@ -133,8 +136,6 @@ class AdminController extends Controller
                 $product->update(['image' => 'storage/' . $path]);
             }
         }
-
-        // Ak je hlavná fotka zmazaná, nastav novú
         $mainExists = $product->images()->where('is_main', true)->exists();
         if (!$mainExists) {
             $first = $product->images()->first();
@@ -149,15 +150,4 @@ class AdminController extends Controller
         return redirect('/products');
     }
 
-    public function destroy(Product $product)
-    {
-        if (Auth::user()->role !== 'admin') {
-            return redirect('/');
-        }
-
-        $product->images()->delete();
-        $product->delete();
-
-        return redirect('/products');
-    }
 }
