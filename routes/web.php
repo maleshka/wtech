@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CheckoutController;
 
 Route::get('/', function () {
     return view('home');
@@ -27,6 +28,12 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/update/{product}', [CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/remove/{product}', [CartController::class, 'remove'])->name('cart.remove');
+
+Route::get('/checkout/shipping', [CheckoutController::class, 'shipping'])->name('checkout.shipping')->middleware('auth');
+Route::post('/checkout/shipping', [CheckoutController::class, 'storeShipping'])->name('checkout.shipping.store')->middleware('auth');
+Route::get('/checkout/delivery', [CheckoutController::class, 'delivery'])->name('checkout.delivery')->middleware('auth');
+Route::post('/checkout/delivery', [CheckoutController::class, 'storeDelivery'])->name('checkout.delivery.store')->middleware('auth');
+Route::get('/checkout/confirm', [CheckoutController::class, 'confirm'])->name('checkout.confirm')->middleware('auth');
 
 Route::get('/admin/products/create', [AdminController::class, 'create'])->name('admin.products.create')->middleware('auth');
 Route::post('/admin/products', [AdminController::class, 'store'])->name('admin.products.store')->middleware('auth');

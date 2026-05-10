@@ -223,7 +223,7 @@
             <button type="button">Confirm</button>
           </div>
 
-          <a href="#" class="continue-btn">Continue</a>
+          <a href="{{ route('checkout.shipping') }}" class="continue-btn">Continue</a>
         </aside>
       </section>
     </div>

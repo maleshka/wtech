@@ -473,6 +473,8 @@ body.checkout-page {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    border: none;
+    cursor: pointer;
 }
 
 .footer {
